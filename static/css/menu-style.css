@@ -1,0 +1,181 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+body {
+  font-family: 'Russo One', sans-serif;  
+  background-color: #2A3549;
+  height: 100vh;
+  position: relative; }
+  body:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1; }
+  body.offcanvas-menu:before {
+    opacity: 1;
+    z-index: 1002;
+    visibility: visible; }
+
+p {
+  color: #b3b3b3;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Russo One', sans-serif;
+}
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; 
+  color: #F5BC00;}
+  a, a:hover {
+    text-decoration: none !important;
+    
+  }
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  margin : 100px 0 0 0 ;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
+  
+
+/* .Header */
+.header {
+  font-family: 'Russo One', sans-serif;
+  display: inline;
+  height: 100px;
+  position: fixed;
+  background-color: #2A3549;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  padding: 0px 0; }
+  @media (min-width: 768px) {
+    .header {
+      padding: 10px 0; } }
+  .header .navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 800;
+    font-size: 2rem; }
+    .header .navbar-brand.absolute {
+      position: absolute; }
+      @media (max-width: 991.98px) {
+        .header .navbar-brand.absolute {
+          position: relative; } }
+    .header .navbar-brand span {
+      color: #fff; }
+      @media (min-width: 768px) {
+        .header .navbar-brand span {
+          color: #ced4da; } }
+  .header .navbar {
+    background: black !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem; }
+    @media (min-width: 768px) {
+      .header .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: none !important;
+        position: relative; } }
+    .header .navbar .nav-link {
+      padding: 1.7rem 1rem;
+      margin:  0 0.5rem;
+      outline: none !important;
+      font-size: 1rem;
+      color: #F5BC00 !important; }
+      @media (max-width: 1199.98px) {
+        .header .navbar .nav-link {
+          padding: .5rem 0rem; } }
+      .header .navbar .nav-link.active {
+        color: #F5BC00 !important; }
+    .header .navbar .dropdown-menu {
+      font-size: 14px;
+      border-radius: 4px;
+      border: none;
+      -webkit-box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
+      min-width: 13em;
+      margin-top: -10px; }
+      .header .navbar .dropdown-menu:before {
+        bottom: 100%;
+        left: 10%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: #fff;
+        border-width: 7px; }
+        @media (max-width: 991.98px) {
+          .header .navbar .dropdown-menu:before {
+            display: none; } }
+      .header .navbar .dropdown-menu .dropdown-item:hover {
+        background: #007bff;
+        color: #fff; }
+      .header .navbar .dropdown-menu .dropdown-item.active {
+        background: #007bff;
+        color: #fff; }
+      .header .navbar .dropdown-menu a {
+        padding-top: 7px;
+        padding-bottom: 7px; }
+    .header .navbar .cta-btn a {
+      background: linear-gradient(to top left,#E61587, #8A2BE2);
+      text-align: center;
+      color: #fff !important;
+      text-transform: uppercase;
+      font-size: .8rem;
+      padding: 15px 20px !important;
+      border: none;
+      border-radius: 3em;
+      line-height: 1;
+      font-weight: bold;
+      -webkit-transition: .3s all ease;
+      -o-transition: .3s all ease;
+      transition: .3s all ease; }
+      .header .navbar .cta-btn a:hover {
+        background: #fff;
+        color:  #B820B5 !important;
+        -webkit-box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2); }
+
+/* 애니메이션 효과 만들기 */
+.spread-underline {
+  color: #F5BC00;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+}
+.spread-underline:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #ffb000;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.spread-underline:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+

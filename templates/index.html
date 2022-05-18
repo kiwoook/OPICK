@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+        <link rel="stylesheet" href="static/fonts/icomoon/style.css">
+    
+        <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    
+        <!-- Bootstrap CSS -->
+        
+        
+        <!-- Navbar Style -->
+    
+        <title>OPICK</title>
+      </head>
+<body>
+  {% include "menu.html" %}
+  {% block contents %}
+  <div class="container">
+    <div class="hero" style="background-color: #2A3510;">
+        <a href="{{url_for('register') }}">회원가입하기 </a>
+        {%if email%}
+        <h1>안녕하세요 {{username}} 님</h1>
+        <a href="{{url_for('logout') }}">로그아웃 </a>
+        {%endif%}
+        <h1>내용 : {{msg}}</h1>
+        
+    </div>
+  </div>
+  {% endblock %}
+        
+    
+
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/popper.min.js"></script> 
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.sticky.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://kit.fontawesome.com/e2bf397c5b.js" crossorigin="anonymous"></script>
+</body>
+</html>
