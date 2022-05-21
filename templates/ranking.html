@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ranking-style.css') }}">
+    <script src="https://kit.fontawesome.com/a3b0aa8fde.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block contents %}
+    <header>
+        <div>통합</div>
+        <div class = "back">넷플릭스</div>
+        <div>웨이브</div>
+        <div>티빙</div>
+        <div>디즈니+</div>
+        <div>왓챠</div>
+        <div>박스오피스</div>
+    </header>
+
+    <div class = "banner">
+        <h2>오늘의 '넷플릭스' 랭킹</h2>
+        <img src = "{{ url_for('static', filename='img/banner.png') }}" />
+    </div>
+
+    
+
+    <div class = "rank">
+
+        {% for src, title in ranking_list %}
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>{{loop.index}}위 {{title}}</h2>
+                </div>
+                <div class = "solid"></div>
+            </div>
+        </div>
+        {% endfor %}
+    
+    {% endblock %}
+        
+<!-- 
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>2. 붉은 단심</h2>
+                </div>
+                <div class = "solid"></div>
+            </div>
+        </div>
+       
+
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>3. 어게인 마이 라이프</h2>
+                </div>
+                <div class = "solid"></div>
+
+            </div>
+        </div>
+       
+
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>4. 탑 건</h2>
+                </div>
+                <div class = "solid"></div>
+            </div>
+        </div>
+       
+
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>5. 모범택시</h2>
+                </div>
+                <div class = "solid"></div>
+            </div>
+        </div>
+       
+        <div class = "list">
+            <div class="fb" >
+                <div class = "list-fb">
+                    <div class = "post"></div>
+                    <h2>6. 내일</h2>
+                </div>
+                <div class = "solid"></div>
+            </div>
+        </div> -->
+       
+       
+    </div>
+</body>
+</html>
