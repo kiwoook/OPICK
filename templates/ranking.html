@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='ranking-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ranking-style.css') }}">
     <script src="https://kit.fontawesome.com/a3b0aa8fde.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -12,17 +12,67 @@
     
     {% block contents %}
     <header>
-        <div>통합</div>
-        <div class = "back">넷플릭스</div>
-        <div>웨이브</div>
-        <div>티빙</div>
-        <div>디즈니+</div>
-        <div>왓챠</div>
-        <div>박스오피스</div>
+        {% if value == 0 %}
+        <div class="back"><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 1 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 2 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 3 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 4 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 5 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% elif value == 6 %}
+        <div><a href="{{ url_for('rank', ott = 0) }}">통합</a></div>
+        <div><a href="{{ url_for('rank', ott = 1) }}">넷플릭스</a></div>
+        <div><a href="{{ url_for('rank', ott = 2) }}">웨이브</a></div>
+        <div><a href="{{ url_for('rank', ott = 3) }}">티빙</a></div>
+        <div><a href="{{ url_for('rank', ott = 4) }}">디즈니+</a></div>
+        <div><a href="{{ url_for('rank', ott = 5) }}">왓챠</a></div>
+        <div class="back"><a href="{{ url_for('rank', ott = 6) }}">박스오피스</a></div>
+        {% endif %}
     </header>
 
     <div class = "banner">
-        <h2>오늘의 '넷플릭스' 랭킹</h2>
+        <h2>오늘의 '{{ott_service[value]}}' 랭킹</h2>
         <img src = "{{ url_for('static', filename='img/banner.png') }}" />
     </div>
 
@@ -34,7 +84,7 @@
         <div class = "list">
             <div class="fb" >
                 <div class = "list-fb">
-                    <div class = "post"></div>
+                    <img class="post" src={{src}}>
                     <h2>{{loop.index}}위 {{title}}</h2>
                 </div>
                 <div class = "solid"></div>

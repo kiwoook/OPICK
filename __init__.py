@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect #csrf
 from models import db
 from models import User
 from form import RegisterForm, LoginForm
+from rank_crawling import ranking
 
 
 app = Flask(__name__)
@@ -59,6 +60,12 @@ def login():
 def logout():
     session.pop('email', None)
     return redirect('/')
+
+@app.route('/ranking/<int:ott>')
+def rank(ott):
+    ott_service = ['통합', '넷플릭스', '웨이브', '티빙', '디즈니+', '왓챠', '박스오피스']
+    ranking_list = ranking_tuple[ott]
+    return render_template('ranking.html', ranking_list = ranking_list, value = ott, ott_service = ott_service)
         
 
 if __name__ == '__main__':
@@ -77,5 +84,7 @@ if __name__ == '__main__':
     db.init_app(app) #app설정값 초기화
     db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() #DB생성
+
+    ranking_tuple = ranking() 
 
     app.run(host="127.0.0.1", port="8083", debug=True)
