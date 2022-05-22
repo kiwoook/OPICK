@@ -1,25 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-style.css') }}">
-
-    <title></title>
-  </head>
-  <body>
     
         <header role="banner">
           <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -46,7 +25,7 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><span class="spread-underline">Ranking</span></a>
+                    <a class="nav-link" href="{{ url_for('rank', ott = 0) }}"><span class="spread-underline">Ranking</span></a>
                   </li>
                 </ul>
                 {%if email%}
@@ -69,9 +48,4 @@
         </header>
         <!-- END header -->
 
-    
-
   
-   
-  </body>
-</html>

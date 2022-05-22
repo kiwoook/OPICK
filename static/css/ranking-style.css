@@ -23,12 +23,9 @@ header div{
     line-height: 35px;
     border-radius: 30px;
     font-weight: bold;
+    text-decoration: none !important; 
 }
 
-a{
-    text-decoration: none;
-    color:#ced4da;
-}
 
 header div:nth-child(2){
     width: 120px;
