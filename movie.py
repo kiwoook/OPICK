@@ -23,6 +23,9 @@ def TV_Deatail(id):
 
     return (tv_info)
 
+#아이디값에 맞춰서 해당 데이터 반환할 수 있음.
 TV_Deatail(52814)
+
+
 
 #https://image.tmdb.org/t/p/original/ 를 붙여 파일 출력시키기
