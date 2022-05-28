@@ -1,13 +1,7 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-  
+/* Header */
+header {
 
-/* .Header */
-.header {
-  font-family: 'Russo One', sans-serif;
-  display: flex;
-  height: 100px;
   position: fixed;
   background-color: #2A3549;
   top: 0;
@@ -16,45 +10,45 @@
   z-index: 5;
   padding: 0px 0; }
   @media (min-width: 768px) {
-    .header {
+    header {
       padding: 10px 0; } }
-  .header .navbar-brand {
+  header .navbar-brand {
     text-transform: uppercase;
     letter-spacing: .2em;
     font-weight: 800;
     font-size: 2rem; }
-    .header .navbar-brand.absolute {
+    header .navbar-brand.absolute {
       position: absolute; }
       @media (max-width: 991.98px) {
-        .header .navbar-brand.absolute {
+        header .navbar-brand.absolute {
           position: relative; } }
-    .header .navbar-brand span {
+    header .navbar-brand span {
       color: #fff; }
       @media (min-width: 768px) {
-        .header .navbar-brand span {
+        header .navbar-brand span {
           color: #ced4da; } }
-  .header .navbar {
+  header .navbar {
     background: black !important;
     padding-top: .5rem;
     padding-bottom: .5rem; }
     @media (min-width: 768px) {
-      .header .navbar {
+      header .navbar {
         padding-top: 0;
         padding-bottom: 0;
         background: none !important;
         position: relative; } }
-    .header .navbar .nav-link {
+    header .navbar .nav-link {
       padding: 1.7rem 1rem;
       margin:  0 0.5rem;
       outline: none !important;
       font-size: 1rem;
       color: #F5BC00 !important; }
       @media (max-width: 1199.98px) {
-        .header .navbar .nav-link {
+        header .navbar .nav-link {
           padding: .5rem 0rem; } }
-      .header .navbar .nav-link.active {
+      header .navbar .nav-link.active {
         color: #F5BC00 !important; }
-    .header .navbar .dropdown-menu {
+    header .navbar .dropdown-menu {
       font-size: 14px;
       border-radius: 4px;
       border: none;
@@ -62,7 +56,7 @@
       box-shadow: 0 2px 30px 0px rgba(0, 0, 0, 0.2);
       min-width: 13em;
       margin-top: -10px; }
-      .header .navbar .dropdown-menu:before {
+      header .navbar .dropdown-menu:before {
         bottom: 100%;
         left: 10%;
         border: solid transparent;
@@ -74,20 +68,19 @@
         border-bottom-color: #fff;
         border-width: 7px; }
         @media (max-width: 991.98px) {
-          .header .navbar .dropdown-menu:before {
+          header .navbar .dropdown-menu:before {
             display: none; } }
-      .header .navbar .dropdown-menu .dropdown-item:hover {
+      header .navbar .dropdown-menu .dropdown-item:hover {
         background: #007bff;
         color: #fff; }
-      .header .navbar .dropdown-menu .dropdown-item.active {
+      header .navbar .dropdown-menu .dropdown-item.active {
         background: #007bff;
         color: #fff; }
-      .header .navbar .dropdown-menu a {
+      header .navbar .dropdown-menu a {
         padding-top: 7px;
         padding-bottom: 7px; }
-    .header .navbar .cta-btn a {
+    header .navbar .cta-btn a {
       background: linear-gradient(to top left,#E61587, #8A2BE2);
-      text-align: center;
       color: #fff !important;
       text-transform: uppercase;
       font-size: .8rem;
@@ -99,7 +92,7 @@
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;
       transition: .3s all ease; }
-      .header .navbar .cta-btn a:hover {
+      header .navbar .cta-btn a:hover {
         background: #fff;
         color:  #B820B5 !important;
         -webkit-box-shadow: 2px 0 30px -5px rgba(0, 0, 0, 0.2);
