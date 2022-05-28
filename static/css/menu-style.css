@@ -1,60 +1,12 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-body {
-  font-family: 'Russo One', sans-serif;  
-  background-color: #2A3549;
-  height: 100vh;
-  position: relative; }
-  body:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    -webkit-transition: .3s all ease;
-    -o-transition: .3s all ease;
-    transition: .3s all ease;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1; }
-  body.offcanvas-menu:before {
-    opacity: 1;
-    z-index: 1002;
-    visibility: visible; }
-
-p {
-  color: #b3b3b3;
-  font-weight: 300; }
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Russo One', sans-serif;
-}
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease; 
-  color: #F5BC00;}
-  a, a:hover {
-    text-decoration: none !important;
-    
-  }
-
-.hero {
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat; }
   
 
 /* .Header */
 .header {
   font-family: 'Russo One', sans-serif;
-  display: inline;
+  display: flex;
   height: 100px;
   position: fixed;
   background-color: #2A3549;

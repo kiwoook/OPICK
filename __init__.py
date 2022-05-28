@@ -22,6 +22,16 @@ def mainpage():
         session['username'] = username
         return render_template('index.html',username=username,email=email)
     return render_template('index.html',email=email)
+
+@app.route('/demo')
+def demo():
+    email = session.get('email', None)
+    if(email != None):
+        userinfo = User.query.filter_by(email=email).first()
+        username = userinfo.username
+        session['username'] = username
+        return render_template('index.html',username=username,email=email)
+    return render_template('demo.html', email= email)
     
 @app.route('/welcome')
 def welcome(): 
@@ -85,6 +95,7 @@ if __name__ == '__main__':
     db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() #DB생성
 
-    ranking_tuple = ranking() 
+    # 실제 서비스할때만 작동시키기
+    # ranking_tuple = ranking() 
 
     app.run(host="127.0.0.1", port="8083", debug=True)

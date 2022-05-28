@@ -1,0 +1,60 @@
+logo-slider {
+    --image-size: 22vh;
+    
+    padding: 20px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    margin: 2em auto;
+    position: relative;
+    display: flex
+}
+
+logo-slider:hover div {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused
+}
+
+logo-slider div {
+    display: flex;
+    position: relative;
+    -webkit-animation: marquee 10s linear infinite;
+    animation: marquee 10s linear infinite;
+    justify-content: space-around
+}
+
+logo-slider img {
+    display: block;
+    min-width: var(--image-size);
+    height: var(--image-size);
+    margin: 0 1vw
+}
+
+
+
+@media(max-width: 900px) {
+    logo-slider {
+        --image-size: 50px;
+        --image-size: min(max(50px, 10vw), 100px)
+    }
+}
+
+@-webkit-keyframes marquee {
+    0% {
+        transform: translateX(0%)
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%)
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
+}
