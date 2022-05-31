@@ -1,17 +1,31 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from pyvirtualdisplay import Display
 import requests
 import time
 
 from def1 import merge_list
 
+options = webdriver.ChromeOptions()
+
+options.headless = True
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
+options.add_argument("enable-automation")
+options.add_argument("--disable-infobars")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("lang=ko_KR")
 
 def ranking(*args):
     img_datas = []
     text_datas = []
 
+    # 윈도우 환경
     path = 'C:\WebDriver/chromedriver.exe'
-    driver = webdriver.Chrome(path)
+    # 우분투 환경
+    ubuntu_path = "/home/ubuntu/chromedriver"
+
+    driver = webdriver.Chrome(ubuntu_path, options=options)
 
     # 통합 랭킹 받아오기
     driver.get("https://m.kinolights.com/ranking/kino")
