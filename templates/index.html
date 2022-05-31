@@ -1,48 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
-        <link rel="stylesheet" href="static/fonts/icomoon/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
-        
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
-        
-        <!-- Navbar Style -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    
-        <!-- Style -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-style.css') }}">
-        <title>OPICK</title>
-      </head>
-<body>
-  {% include "menu.html" %}
-  {% block contents %}
-  <div class="container">
-    <div class="hero" style="background-color: #2A3510;">
-        <a href="{{url_for('register') }}">회원가입하기 </a>
-        {%if email%}
-        <h1>안녕하세요 {{username}} 님</h1>
-        <a href="{{url_for('logout') }}">로그아웃 </a>
-        {%endif%}
-        <h1>내용 : {{msg}}</h1>
-        
-    </div>
-  </div>
-  {% endblock %}
-        
-    
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script> 
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="static/js/jquery.sticky.js"></script>
-    <script src="static/js/main.js"></script>
-    <script src="https://kit.fontawesome.com/e2bf397c5b.js" crossorigin="anonymous"></script>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>오늘의 픽</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/javascript.fullPage.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/slide.css') }}">
+
+
+	<!-- 메뉴 css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="static/fonts/icomoon/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/menu-style.css') }}">
+
+	<style>
+		#section1 p {
+			opacity: 0.8;
+		}
+
+
+		/* Section 3
+		 * --------------------------------------- */
+		#section2 {
+			background-color: #2C3E50;
+		}
+
+		#section2 h1 {
+			color: #F2F2F2;
+		}
+
+		#section2 p {
+			opacity: 0.6;
+		}
+	</style>
+</head>
+
+<body>
+	{% include "menu.html"%}
+
+	{% block contents %}
+	<div id="fullpage">
+		<div class="section " id="section1">
+			<div class="content">
+				{%if email%}
+				<h2 class="first">안녕하세요 {{username}}님!<br>즐기기만해도 바쁜 시간,</h2>
+				{% else %}
+				<h2 class="first">즐기기만해도 바쁜 시간,</h2>
+				{% endif %}
+				<h2 class="text2">나머지는 오픽이 책임질게요.</h2>
+				<logo-slider>
+					<div class="images slide-image" style="float:right;">
+						{% for p_data in popular_list %}
+						{% if p_data['media_type'] == 'movie' %}
+						<a href="{{ url_for('movie', id = p_data['id']) }}"><img src="{{p_data['src']}}" alt=""></a>
+						{% elif p_data['media_type'] == 'tv' %}
+						<a href="{{ url_for('tv', id = p_data['id']) }}"><img src="{{p_data['src']}}" alt=""></a>
+						{% else %}
+						<a href="#"><img src="{{p_data['src']}}" alt=""></a>
+						{% endif %}
+						{% endfor %}
+						
+					</div>
+					<div class="images slide-image" style="float:right;">
+						{% for p_data in popular_list %}
+						<a href="#"><img src="{{p_data['src']}}" alt=""></a>
+						{% endfor %}
+						
+					</div>
+				</logo-slider>
+				<h3 class="first">오늘 인기있는 작품들 입니다!</h2>
+			</div>
+		</div>
+		<div class="section" id="section2">
+			<div class="content">
+				<!-- 패스 -->
+			</div>
+			<div class="slide" id="slide1">
+				<div class="content1">
+					<span class="top">
+						<h2> 추천해주는 작품이 내가 선호하는 장르랑 많이 다르네 ,,</h2>
+					</span>
+				</div>
+			</div>
+			<div class="slide" id="slide2">
+				<div class="content1">
+					<span class="right">
+						<h2> 나는 넷플릭스도 보고 왓챠도 보는데 어디에<br>
+							어떤 작품이 있는지 하나도 모르겠어</h2>
+					</span>
+				</div>
+			</div>
+			<div class="slide" id="slide2">
+				<div class="content1">
+					<span class="bottom">
+						<h2> 티빙에 재미있는 작품이 올라왔다는데 누구 같이 볼 
+							사람 없나?</h>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section3">
+			<div class="content">
+				<div class="container">
+					<h2 style="color:gray">당신의 소중한 휴식 시간을 위해</br></h2></br>
+					<h2 class="text2">이제 고민은 오픽이 할게요.</h2>
+					</br>
+					</br>
+					<div class="text-container">
+						<div class="text-box" style="background-color:rgb(32, 32, 56);">
+							<h4
+								style="text-align:center; text-decoration: underline;text-decoration-color: #3A4CA8;text-decoration-thickness:3px; color: gray;">
+								사용하는 OTT 선택</h4>
+							</br>
+							<p style="color:gray; ">
+								평소 사용하는 OTT를 선택해주세요
+							</p>
+						</div>
+						<div class="text-box" style="background-color:rgb(32, 32, 56);">
+							<h4
+								style="text-align:center;text-decoration: underline;text-decoration-color: #3A4CA8;text-decoration-thickness:3px;color: gray; ">
+								선호하는 장르 선택</h4>
+							</br>
+							<p style="color:gray;">
+								로맨스, 호러, 스릴러 등
+								좋아하는 장르를 선택해주세요
+							</p>
+						</div>
+						<div class="text-box" style="background-color:rgb(32, 32, 56);">
+							<h4
+								style="text-align:center;text-decoration: underline;text-decoration-color: #3A4CA8;text-decoration-thickness:3px;color: gray;">
+								오픽의 작품 추천</h4>
+							</br>
+							<p style="color:gray;">
+								이제 오픽이 고민을 해서
+								OTT를 추천할게요!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section4">
+			<div class="content">
+				<div class="container" style="text-align: center;">
+					<h2 style="color:gray">오픽에서는 누구나</br></h2></br>
+					<h2 class="text2">파티장, 파티원이 될 수 있어요.</h2>
+					<div class="text-container">
+						<div class="text-box" style="background-color:rgb(32, 32, 56);">
+							<h4
+								style="text-align:center; text-decoration: underline;text-decoration-color: #3A4CA8;text-decoration-thickness:3px; color: gray;">
+								파티장으로 참여하기</h4>
+							</br>
+							<p style="color:gray; ">
+								1. 원하는 OTT 플랫폼 선택해요</br>
+								2. 가격, 인원 등정보 입력해요</br>
+								3. 파티원이 참가하기 누르면</br>
+								빠른 매칭이 이루어져요
+							</p>
+						</div>
+						<div class="text-box" style="background-color:rgb(32, 32, 56);">
+							<h4
+								style="text-align:center;text-decoration: underline;text-decoration-color: #3A4CA8;text-decoration-thickness:3px;color: gray; ">
+								파티원으로 참여하기</h4>
+							</br>
+							<p style="color:gray; ">
+								오픽에서 원하는 파티 선택 후 </br>
+								참가하기를 선택하면</br>
+								빠른 매칭이 이루어져요!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section5">
+			<div class="content">
+				<div class="container">
+					<h2 class="text2"><i>WHAT'S YOUR PICK?</i>
+					</h2>
+					</br>
+					</br>
+					</br>
+					<form>
+						<button type="button"
+							style=" width:300px; margin:auto;background-color:#3A4CA8;  color:black; float:center; text-align:center; margin: 20px;padding: 20px;">
+							<h3> 오픽의 픽 보러가기</h3>
+						</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	{% endblock %}
+
+				<script src="static/js/jquery-3.3.1.min.js"></script>
+				<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+				<script src="static/js/jquery.sticky.js"></script>
+				<script src="static/js/main.js"></script>
+				<script src="https://kit.fontawesome.com/e2bf397c5b.js" crossorigin="anonymous"></script>
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+					integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+					integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+				<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+				<script type="text/javascript" src="{{ url_for('static', filename='js/javascript.fullPage.js') }}">
+				</script>
+				<script type="text/javascript">
+					fullpage.initialize('#fullpage', {
+						anchors: ['0', '1', '2', '3', '4'],
+						menu: '#menu',
+						css3: true,
+						autoScrolling: true,
+						onLeave: (origin, destination, direction) => {
+							locations = "#section" + destination;
+							const section = document.querySelector(locations);
+							const title = section.querySelector(".content");
+							const tl = new TimelineMax({
+								delay: 0.5
+							});
+							tl.fromTo(title, 0.5, {
+								y: "50",
+								opacity: 0
+							}, {
+								y: "-50%",
+								opacity: 1
+							});
+
+
+						}
+					});
+				</script>
+
 </body>
+
 </html>

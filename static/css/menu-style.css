@@ -1,7 +1,17 @@
 
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; 
+  color: #F5BC00;}
+  a, a:hover {
+    text-decoration: none !important;
+    
+  }
 /* Header */
 header {
-
+  display: block;
   position: fixed;
   background-color: #2A3549;
   top: 0;
@@ -11,7 +21,7 @@ header {
   padding: 0px 0; }
   @media (min-width: 768px) {
     header {
-      padding: 10px 0; } }
+      padding: 0 0; } }
   header .navbar-brand {
     text-transform: uppercase;
     letter-spacing: .2em;
@@ -122,4 +132,3 @@ header {
   width: 100%; 
   left: 0; 
 }
-

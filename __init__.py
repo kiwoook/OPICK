@@ -2,12 +2,14 @@ import os #디렉토리 절대 경로
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+
 from flask import session #세션
 from flask_wtf.csrf import CSRFProtect #csrf
 from models import db
 from models import User
 from form import RegisterForm, LoginForm
 from rank_crawling import ranking
+from movie import *
 
 
 app = Flask(__name__)
@@ -16,22 +18,18 @@ app.secret_key = os.urandom(24)
 @app.route('/')
 def mainpage():
     email = session.get('email', None)
-    if(email != None):
-        userinfo = User.query.filter_by(email=email).first()
-        username = userinfo.username
-        session['username'] = username
-        return render_template('index.html',username=username,email=email)
-    return render_template('index.html',email=email)
 
-@app.route('/demo')
-def demo():
-    email = session.get('email', None)
+    # 인기 작품 데이터 반환
+    popular_list = TMDB_Trending()
+
+    # 이메일 세션 처리 
     if(email != None):
         userinfo = User.query.filter_by(email=email).first()
         username = userinfo.username
         session['username'] = username
-        return render_template('index.html',username=username,email=email)
-    return render_template('demo.html', email= email)
+        return render_template('index.html',username=username,email=email, popular_list = popular_list)
+
+    return render_template('index.html',email=email, popular_list = popular_list)
     
 @app.route('/welcome')
 def welcome(): 
@@ -71,6 +69,18 @@ def logout():
     session.pop('email', None)
     return redirect('/')
 
+# TV 프로그램 상세 정보 페이지
+@app.route('/tv/<int:id>')
+def tv(id):
+    tv_info, recommended_list = TV_Deatail(id)
+    return render_template('tv_detailed_demo.html', tv_info = tv_info, list = recommended_list)
+
+# 영화 상세 정보 페이지
+@app.route('/movie/<int:id>')
+def movie(id):
+    mv_info, recommended_list = Movie_Deatail(id)
+    return render_template('movie_detailed_demo.html', mv_info = mv_info, list = recommended_list)
+
 @app.route('/ranking/<int:ott>')
 def rank(ott):
     ott_service = ['통합', '넷플릭스', '웨이브', '티빙', '디즈니+', '왓챠', '박스오피스']
@@ -90,12 +100,12 @@ if __name__ == '__main__':
     csrf = CSRFProtect()
     csrf.init_app(app)
 
-#    db = SQLAlchemy() #SQLAlchemy를 사용해 데이터베이스 저장
+#   db = SQLAlchemy() #SQLAlchemy를 사용해 데이터베이스 저장
     db.init_app(app) #app설정값 초기화
     db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() #DB생성
 
     # 실제 서비스할때만 작동시키기
-    # ranking_tuple = ranking() 
+    ranking_tuple = ranking() 
 
     app.run(host="127.0.0.1", port="8083", debug=True)
