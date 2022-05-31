@@ -1,6 +1,9 @@
-import os #디렉토리 절대 경로
+import os
+import sched
+from webbrowser import BackgroundBrowser #디렉토리 절대 경로
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_apscheduler import APScheduler
 
 
 from flask import session #세션
@@ -10,6 +13,13 @@ from models import User
 from form import RegisterForm, LoginForm
 from rank_crawling import ranking
 from movie import *
+
+# 하루에 한번 크롤링 함수가 실행되게 하는 함수
+def everyday_crawling():
+    # 랭킹 튜플 전역변수화
+    global ranking_tuple
+    ranking_tuple = ranking()
+sched = APScheduler()
 
 
 app = Flask(__name__)
@@ -105,7 +115,10 @@ if __name__ == '__main__':
     db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() #DB생성
 
-    # 실제 서비스할때만 작동시키기
-    ranking_tuple = ranking() 
+    ranking_tuple = ranking()
 
-    app.run(host="127.0.0.1", port="8083", debug=True)
+    #12시간 간격으로 실행
+    sched.add_job(id = 'crawling', func=everyday_crawling, trigger = "interval", hours = 12)
+    sched.start()
+
+    app.run(host="0.0.0.0", port="5000", debug=True)
