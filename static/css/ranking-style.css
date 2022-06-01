@@ -5,17 +5,22 @@
 }
 body{
     max-width: 960px;
-    margin:0 auto;
-    background-color: #2a3549;
+    background-color: #2a3549 !important;
 }
 
-header{
+.content{
+    position: absolute;
+    left:50%;
+    margin-left: -520px;
+}
+
+.OTT{
     display: flex;
-    margin-top: 40px;
     justify-content: space-between;
 }
 
-header div{
+.OTT div{
+    margin-top: 100px;
     width:90px;
     height:35px;
     background-color: #dee2e6;
@@ -27,17 +32,19 @@ header div{
 }
 
 
-header div:nth-child(2){
+.OTT div:nth-child(2){
     width: 120px;
 }
 
-header div:nth-child(7){
+.OTT div:nth-child(7){
     width: 120px;
 }
 
-.back{
+.OTT .back{
     background-color: #f5bc00;
-    color:#ced4da;
+}
+.OTT .back a{
+    color:#ced4da !important;
 }
 
 .banner {

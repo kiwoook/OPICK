@@ -93,9 +93,10 @@ def movie(id):
 
 @app.route('/ranking/<int:ott>')
 def rank(ott):
+    email = session.get('email', None)
     ott_service = ['통합', '넷플릭스', '웨이브', '티빙', '디즈니+', '왓챠', '박스오피스']
     ranking_list = ranking_tuple[ott]
-    return render_template('ranking.html', ranking_list = ranking_list, value = ott, ott_service = ott_service)
+    return render_template('ranking.html', ranking_list = ranking_list, value = ott, ott_service = ott_service, email = email)
         
 
 if __name__ == '__main__':
