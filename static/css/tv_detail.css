@@ -95,9 +95,9 @@ td{
     justify-content: space-around;
 }
 
-.recommand_img > .text {
+.recommand_img > div >.text {
     color: white;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .rec_img{

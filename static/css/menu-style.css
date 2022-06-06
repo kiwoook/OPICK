@@ -13,7 +13,7 @@ a {
 header {
   display: block;
   position: fixed;
-  background-color: #2A3549;
+  background-color: rgb(32, 32, 56);
   top: 0;
   left: 0;
   width: 100%;
