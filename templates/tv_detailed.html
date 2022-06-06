@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{tv_info.get('title')}} - 오늘의 픽</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tv_detail.css') }}">
+    <!-- 스크롤 애니메이션 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 메뉴 css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/fonts/icomoon/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-style.css') }}">
+
+    <style>
+        #background {
+            z-index: 1;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('{{tv_info.get("bg_src")}}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 65vh;
+            width: 100%;
+            background-color: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    {% include "menu.html"%}
+
+    <section>
+        <div id="background">
+        </div>
+        <div class="detail">
+            <div>
+                <img class="title_img" src="{{tv_info.get('src')}}">
+            </div>
+            <div class="explain">
+                <table>
+                    <tr>
+                        <th class="title">{{tv_info.get('title')}}</th>
+                    </tr>
+                    <tr>
+                        <th>공개일</th>
+                    </tr>
+                    <tr>
+                        <td>{{tv_info.get('airdate')}}</td>
+                    </tr>
+                    <tr>
+                        <th>플랫폼명</th>
+                    </tr>
+                    <tr>
+                        <td>{{tv_info.get('service')}}</td>
+                    </tr>
+                    <tr>
+                        <th>장르</th>
+                    </tr>
+                    <tr>
+                        <td>{{tv_info.get('genres')}}</td>
+                    </tr>
+                    <tr>
+                        <th>평점</th>
+                    </tr>
+                    <tr>
+                        <td>{{tv_info.get('average')}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="synopsis">
+                <h1>줄거리</h1>
+                {{tv_info.get('overview')}}
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div class="recommand_title">
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                <h1 class="title">이러한 작품은 어떤가요?</h1>
+            </div>
+        </div>
+        {% if list|length == 0 %}
+        <div class="recommand_img">
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                <h1 class="text">어... 추천할만한 작품이 없네요... :(</h1>
+            </div>
+        </div>
+        {% else %}
+        <div class="recommand_img">
+            {% for r_data in list %}
+            <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+                <a href="{{ url_for('tv', id = r_data['id']) }}"><img class="rec_img" src="{{r_data.get('src')}}"></a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="static/js/jquery.sticky.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://kit.fontawesome.com/e2bf397c5b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -86,8 +86,6 @@ def Movie_Deatail(id):
         img_src = "https://image.tmdb.org/t/p/original" + m['poster_path']
         recommended_dict = dict(title = m['title'], id = m['id'], src = img_src)
         recommended_list.append(recommended_dict)
-    print(mv_info)
-    print(recommended_list)
     return mv_info, recommended_list
 
 def Popular_TV():
