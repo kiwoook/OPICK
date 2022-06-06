@@ -82,14 +82,16 @@ def logout():
 # TV 프로그램 상세 정보 페이지
 @app.route('/tv/<int:id>')
 def tv(id):
+    email = session.get('email', None)
     tv_info, recommended_list = TV_Deatail(id)
-    return render_template('tv_detailed.html', tv_info = tv_info, list = recommended_list)
+    return render_template('tv_detailed.html', tv_info = tv_info, list = recommended_list,email=email)
 
 # 영화 상세 정보 페이지
 @app.route('/movie/<int:id>')
 def movie(id):
+    email = session.get('email', None)
     mv_info, recommended_list = Movie_Deatail(id)
-    return render_template('movie_detailed.html', mv_info = mv_info, list = recommended_list)
+    return render_template('movie_detailed.html', mv_info = mv_info, list = recommended_list, email=email)
 
 @app.route('/ranking/<int:ott>')
 def rank(ott):
@@ -122,4 +124,4 @@ if __name__ == '__main__':
     sched.add_job(id = 'crawling', func=everyday_crawling, trigger = "interval", hours = 12)
     sched.start()
 
-    app.run(host="127.0.0.1", port="5000", debug=True)
+    app.run(host="0.0.0.0", port="5000", debug=True)
