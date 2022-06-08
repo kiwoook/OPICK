@@ -27,7 +27,7 @@ def ranking(*args):
     # 우분투 환경
     ubuntu_path = "/home/ubuntu/chromedriver"
 
-    driver = webdriver.Chrome(ubuntu_path, options=options)
+    driver = webdriver.Chrome(path, options=options)
 
     # 통합 랭킹 받아오기
     driver.get("https://m.kinolights.com/ranking/kino")

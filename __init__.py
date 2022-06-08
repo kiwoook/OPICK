@@ -124,4 +124,4 @@ if __name__ == '__main__':
     sched.add_job(id = 'crawling', func=everyday_crawling, trigger = "interval", hours = 12)
     sched.start()
 
-    app.run(host="0.0.0.0", port="5000", debug=True)
+    app.run(host="127.0.0.1", port="5000", debug=True)
