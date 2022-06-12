@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>opick</title>
+  <title>RECOMMAND-OPICK</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
@@ -90,6 +90,8 @@
       font-size: 25px;
     }
   </style>
+
+
 </head>
 
 <body>
@@ -111,7 +113,7 @@
         <div class="button_container"
           style="border: 1px solid none; float:  right;margin-left: 600px;margin-top: 100px;">
           <input type="radio" name="ott" value="f" style="opacity: 0;" />
-          <button class="btn" type="button"><span>NETFLIX</span></button>
+          <button class="btn" type="button" onclick="location.href='{{url_for('recommand2')}}'"><span>NETFLIX</span></button>
         </div>
     </p>
   </div>
@@ -134,3 +136,5 @@
   </div>
   </form>
 </body>
+
+</html>

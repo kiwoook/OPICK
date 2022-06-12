@@ -103,15 +103,15 @@ img{
                 <form id="ottname" action="#" method="post">
                  <div class="button_container" style="border: 1px solid none; float: left;margin-top: 30px;">
                     <input type="radio" name="sad" value="f"style="opacity: 0;" />
-                         <button class="btn"  type="button" ><span><img src="마음이.jpg"></span></button>
+                         <button class="btn"  type="button" ><span><img src="{{ url_for('static', filename='img/마음이.jpg') }}"></span></button>
                 </div>
                 <div class="button_container"  style="border: 1px solid none; float: right; margin-right: 600px;margin-top: 30px;" >
                     <input type="radio" name="ani" value="f" style="opacity: 0;"/>
-                     <button class="btn"  type="button" ><span><img src="귀칼.jpg"></span></button>
+                     <button class="btn"  type="button" ><span><img src="{{ url_for('static', filename='img/귀칼.jpg') }}"></span></button>
                 </div>
                 <div class="button_container"   style="border: 1px solid none; float:  right;margin-left: 600px;margin-top: 30px;">
                     <input type="radio" name="thriller" value="f" style="opacity: 0;"/>
-                      <button class="btn"  type="button"><span><img src="범죄도시.jpg"></span></button>
+                      <button class="btn" type="button" onclick="location.href='{{url_for('recommand3')}}'"><span><img src="{{ url_for('static', filename='img/범죄도시.jpg') }}"></span></button>
                 </div>
     </p>
 </div>
@@ -121,15 +121,15 @@ img{
         <div class="button_container" style="border: 1px solid none; float: left; margin-top: 270px;">
             <input type="radio" name="romance" value="f" style="opacity: 0;"/>
         <button class="btn" type="button">
-            <span><img src="라라랜드.jpg"></span></button>
+            <span><img src="{{ url_for('static', filename='img/라라랜드.jpg') }}"></span></button>
         </div>
         <div class="button_container"  style="border: 1px solid none; float: right; margin-right: 600px;margin-top: 270px;" >
             <input type="radio" name="comic" value="f" style="opacity: 0;"/>
-            <button class="btn" type="button" ><span><img src="엑시트.jpg"></span></button>
+            <button class="btn" type="button" ><span><img src="{{ url_for('static', filename='img/엑시트.jpg') }}"></span></button>
         </div>
         <div class="button_container"   style="border: 1px solid none; float:  right;margin-left: 600px;margin-top: 270px;">
             <input type="radio" name="horror" value="f"style="opacity: 0;" />
-            <button class="btn" type="button"><span><img src="애나벨.jpg"></span></button>
+            <button class="btn" type="button"><span><img src="{{ url_for('static', filename='img/애나벨.jpg') }}"></span></button>
         </div>
 
 </div>
