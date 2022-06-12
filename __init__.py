@@ -100,6 +100,17 @@ def rank(ott):
     ranking_list = ranking_tuple[ott]
     return render_template('ranking.html', ranking_list = ranking_list, value = ott, ott_service = ott_service, email = email)
         
+@app.route('/recommand/1')
+def recommand1():
+    return render_template('recom1.html')
+
+@app.route('/recommand/2')
+def recommand2():
+    return render_template('recom2.html')
+
+@app.route('/recommand/3')
+def recommand3():
+    return render_template('recom3.html')
 
 if __name__ == '__main__':
     basedir = os.path.abspath(os.path.dirname(__file__)) #현재 파일이 있는 디렉토리 절대 경로
@@ -118,10 +129,10 @@ if __name__ == '__main__':
     db.app = app #Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() #DB생성
 
-    ranking_tuple = ranking()
-
     #12시간 간격으로 실행
     sched.add_job(id = 'crawling', func=everyday_crawling, trigger = "interval", hours = 12)
     sched.start()
 
-    app.run(host="127.0.0.1", port="5000", debug=True)
+    ranking_tuple = ranking()
+
+    app.run(host="0.0.0.0", port="5000", debug=False)
