@@ -338,3 +338,17 @@ span {
 .radial:hover {
   background-size: 180% 400%;
 }
+
+.recommand_img{
+  display: flex;
+  margin: 10vh 10vw;
+
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.rec_img{
+  width: 220px;
+  height: 330px;
+}
+

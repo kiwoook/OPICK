@@ -70,8 +70,7 @@ td{
 
 .synopsis{
     display: flex;
-    color: #2A3549;
-    background-color:#FFCD4A;
+    color: #e0e0e0;
     border-radius: 25px;
     width: 50%;
     height: 180px !important;

@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400");
 
+a{
+  text-decoration: none;
+}
 
 .btn {
   box-sizing: border-box;

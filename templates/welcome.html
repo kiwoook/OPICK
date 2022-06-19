@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>OPick</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
-<link rel="stylesheet" href="static/css/welcome-style.css">
+    <meta charset="UTF-8">
+    <title>OPick</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+    <link rel="stylesheet" href="static/css/welcome-style.css">
 
 </head>
+
 <body>
-    
-	<div class="section">
-		<div class="container">
+
+    <div class="section">
+        <div class="container">
             <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
                     <div class="card-front">
                         <div class="center-wrap">
                             <div class="section text-center">
-                                <h1 style="text-align:center;" >welcome!</h1></br></br>
-                                    <div style="text-align: center;">
-                                        <i><h4 class="mb-4 pb-3" >{{username}}님에게 추천드리는<br>오늘의 픽은?</h4></i>
-                                            <div class="box">
-                                                <h6 class="op">오늘의 픽 보러가기</h6></div>
-                                                
-                                                </div>
+                                <h1 style="text-align:center;">welcome!</h1></br></br>
+                                <div style="text-align: center;">
+                                    <i>
+                                        <h4 class="mb-4 pb-3">{{username}}님! 환영합니다</h4>
+                                    </i>
+                                    <a href ="{{ url_for('mainpage') }}">
+                                        <div class="box">
+                                            <h6 class="op">메인 페이지로 돌아가기</h6>
                                         </div>
+                                    </a>
+
+
+
                                 </div>
-							</div>
-				      	</div>
-			      	</div>
-			    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-                                
+
 
 </body>
+
 </html>

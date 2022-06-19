@@ -1,4 +1,4 @@
-from tmdbv3api import TMDb, TV, Movie, Trending
+from tmdbv3api import TMDb, TV, Movie, Trending, Discover
 
 from collections import deque
 
@@ -56,13 +56,13 @@ def Movie_Deatail(id):
     # 이미지 
     img_src = ""
     bgImg_src = ""
-    if(m.poster_path is None) :
+    if(m.poster_path is None ) :
         img_src = "https://via.placeholder.com/300x450"
     elif(m.backdrop_path is None) :
         bgImg_src = None
     else :
-        img_src = "https://image.tmdb.org/t/p/original" + m.poster_path
-        bgImg_src =  "https://image.tmdb.org/t/p/original" + m.backdrop_path
+        img_src = "https://image.tmdb.org/t/p/original" + str(m.poster_path)
+        bgImg_src =  "https://image.tmdb.org/t/p/original" + str(m.backdrop_path)
 
     #장르
     genres = ""
@@ -83,6 +83,8 @@ def Movie_Deatail(id):
         if( i>= 5):
             break
             #3개 이상 들어가면 종료
+        if(m['poster_path'] is None):
+            continue
         img_src = "https://image.tmdb.org/t/p/original" + m['poster_path']
         recommended_dict = dict(title = m['title'], id = m['id'], src = img_src)
         recommended_list.append(recommended_dict)
@@ -106,7 +108,7 @@ def Popular_TV():
 def TMDB_Trending():
     trending_list = [] 
     trending = Trending()
-    shows = trending.all_day()
+    shows = trending.all_week()
 
     for index, t in enumerate(shows):
         if(index >= 10):
@@ -117,9 +119,36 @@ def TMDB_Trending():
         trending_list.append(trending_dict)
     return trending_list
 
+def Discover_korean_mv():
+    korean_mv_list = []
+    discover = Discover()
+
+    show = discover.discover_movies({"sort_by":"popularity.desc",'with_original_language': 'ko', "primary_release_date.gte" : "2022-06-01", "primary_release_date.lte" : "2022-06-30"})
+
+    for index, s in enumerate(show):
+        if(index >= 5):
+            break
+        img_src = "https://image.tmdb.org/t/p/original" + s['poster_path']
+        trending_dict = dict(title = s['title'], id = s['id'], src = img_src)
+        
+        korean_mv_list.append(trending_dict)
+    return korean_mv_list
 
 
-# Movie_Deatail(619803)
+def Discover_korean_tv():
+    korean_tv_list = []
+    discover = Discover()
+
+    show = discover.discover_tv_shows({"sort_by":"popularity.desc",'with_original_language': 'ko'})
+
+    for index, t in enumerate(show):
+        if(index >= 5):
+            break
+        img_src = "https://image.tmdb.org/t/p/original" + t['poster_path']
+        trending_dict = dict(title = t['name'], id = t['id'], src = img_src)
+
+        korean_tv_list.append(trending_dict)
+    return korean_tv_list
 
 # index html에 아래와 같이 jinja로 구현하기
 # for p_data in popular_list:
