@@ -32,14 +32,18 @@ def mainpage():
     # 인기 작품 데이터 반환
     popular_list = TMDB_Trending()
 
+    #국내 영화, OTT 작품 반환
+    korean_mv_list = Discover_korean_mv()
+    korean_tv_list = Discover_korean_tv()
+
     # 이메일 세션 처리 
     if(email != None):
         userinfo = User.query.filter_by(email=email).first()
         username = userinfo.username
         session['username'] = username
-        return render_template('index.html',username=username,email=email, popular_list = popular_list)
+        return render_template('index.html',username=username,email=email, popular_list = popular_list, korean_mv_list = korean_mv_list, korean_tv_list = korean_tv_list)
 
-    return render_template('index.html',email=email, popular_list = popular_list)
+    return render_template('index.html',email=email, popular_list = popular_list, korean_mv_list = korean_mv_list, korean_tv_list = korean_tv_list)
     
 @app.route('/welcome')
 def welcome(): 
@@ -135,4 +139,4 @@ if __name__ == '__main__':
 
     ranking_tuple = ranking()
 
-    app.run(host="0.0.0.0", port="5000", debug=False)
+    app.run(host="0.0.0.0", port="5000", debug=True)
