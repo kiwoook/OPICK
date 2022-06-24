@@ -128,6 +128,8 @@ def Discover_korean_mv():
     for index, s in enumerate(show):
         if(index >= 5):
             break
+        if(s['poster_path'] is None):
+            continue
         img_src = "https://image.tmdb.org/t/p/original" + s['poster_path']
         trending_dict = dict(title = s['title'], id = s['id'], src = img_src)
         
